@@ -105,6 +105,7 @@ cdef class SO3:
         res = SO3()
         res.thisptr = new _SO3d(_SO3d.rotZ(scalar))
         return res
+
 cdef class SE3:
     cdef _SE3d *thisptr
 
@@ -184,9 +185,11 @@ cdef class SE3:
         res = SE3()
         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))
         return res
+
     @staticmethod
     def generator(int i):
         return ndarray(_SE3d.generator(i))
+
     @staticmethod
     def hat(np.ndarray tangent):
         return ndarray(_SE3d.hat(Map[VectorXd](tangent)))
@@ -198,29 +201,36 @@ cdef class SE3:
     @staticmethod
     def transX(x):
         return SE3.trans(x, 0, 0)
+
     @staticmethod
     def transY(y):
         return SE3.trans(0, y, 0)
+
     @staticmethod
     def transZ(z):
         return SE3.trans(0, 0, z)
+
     @staticmethod
     def rotX(scalar):
         res = SE3()
         res.thisptr = new _SE3d(_SE3d.rotX(scalar))
         return res
+
     @staticmethod
     def rotY(scalar):
         res = SE3()
         res.thisptr = new _SE3d(_SE3d.rotY(scalar))
         return res
+
     @staticmethod
     def rotZ(scalar):
         res = SE3()
         res.thisptr = new _SE3d(_SE3d.rotZ(scalar))
         return res
+
     @staticmethod
     def trans(x, y, z):
         res = SE3()
         res.thisptr = new _SE3d(_SE3d.trans(x,y,z))
         return res
+

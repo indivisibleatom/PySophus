@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from eigency.core cimport *
 
-
-
 cdef extern from "<sophus/so3.hpp>" namespace "Sophus":
   cdef cppclass SO3[Scalar]:
       SO3() except +
@@ -35,7 +33,6 @@ cdef extern from "<sophus/so3.hpp>" namespace "Sophus":
       SO3 rotY(const Scalar&)
       @staticmethod
       SO3 rotZ(const Scalar&)
-      
 
 cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
   cdef cppclass SE3[Scalar]:
@@ -46,7 +43,7 @@ cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
     Matrix4d& matrix()
     Vector3d translation()
     SO3 so3()
-        
+
     VectorXd log()
 
     SE3 inverse()
@@ -81,3 +78,4 @@ cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
     SE3 rotY(const Scalar&)
     @staticmethod
     SE3 rotZ(const Scalar&)
+
